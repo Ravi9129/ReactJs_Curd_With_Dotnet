@@ -2,6 +2,11 @@ import React, { useState, useEffect, Fragment } from 'react'
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
+
+
 
 
 function Crud() {
@@ -42,8 +47,8 @@ function Crud() {
 
     const handleEdit = (id) => {
 
-     //   alert(id);
-     handleShow();
+        //   alert(id);
+        handleShow();
     }
     const handleDelete = (id) => {
         if (window.confirm("Are you sure to delete this employee ") == true) {
@@ -52,11 +57,35 @@ function Crud() {
 
     }
 
+    const handleUpdate = () => {
+
+    }
+
     return (
 
         <Fragment>
 
-            <Table striped bordered hover>
+
+            <Container>
+
+                <Row className='mt-4'>
+                    <Col>
+                        <input type='text' className='form-control' placeholder='Enter Name'></input>
+                    </Col>
+                    <Col>
+                        <input type='text' className='form-control' placeholder='Enter Age'></input>
+                    </Col>
+                    <Col>
+                        <input type='checkbox' ></input>
+                        <label>IsActive</label>
+                    </Col>
+                    <Col>
+                        <button className='btn btn-primary'>Submit</button>
+                    </Col>
+                </Row>
+            </Container>
+
+            <Table striped bordered hover className='mt-4'>
                 <thead>
                     <tr>
                         <th>#</th>
@@ -96,14 +125,30 @@ function Crud() {
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Modal heading</Modal.Title>
+                    <Modal.Title>Modify/Update Employee Data</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>Woohoo, you are reading this text in a modal!</Modal.Body>
+                <Modal.Body>
+
+                    <Row className='mt-4'>
+                        <Col>
+                            <input type='text' className='form-control' placeholder='Enter Name'></input>
+                        </Col>
+                        <Col>
+                            <input type='text' className='form-control' placeholder='Enter Age'></input>
+                        </Col>
+                        <Col>
+                            <input type='checkbox' ></input>
+                            <label>IsActive</label>
+                        </Col>
+                      
+                    </Row>
+
+                </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
                         Close
                     </Button>
-                    <Button variant="primary" onClick={handleClose}>
+                    <Button variant="primary" onClick={handleUpdate}>
                         Save Changes
                     </Button>
                 </Modal.Footer>
