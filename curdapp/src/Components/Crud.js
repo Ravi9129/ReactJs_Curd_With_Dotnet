@@ -15,7 +15,16 @@ function Crud() {
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+    //add new form
+    const[name,setName]=useState('')
+    const[age,setAge]=useState('')
+    const[isActive,setIsActive]=useState(0)
 
+//edit form
+const[editId,setEditId]=useState('')
+const[editname,setEditName]=useState('')
+const[editage,setEditAge]=useState('')
+const[editisActive,setEditIsActive]=useState(0)
 
     const empdata = [
         {
@@ -26,7 +35,7 @@ function Crud() {
         },
         {
             id: 2,
-            name: "Ankita",
+            name: "Shubham",
             age: 24,
             isActive: 1
         },
@@ -70,13 +79,16 @@ function Crud() {
 
                 <Row className='mt-4'>
                     <Col>
-                        <input type='text' className='form-control' placeholder='Enter Name'></input>
+                        <input type='text' className='form-control' placeholder='Enter Name'
+                        value={name} onChange={(e)=>setName(e.target.value)}></input>
                     </Col>
                     <Col>
-                        <input type='text' className='form-control' placeholder='Enter Age'></input>
+                        <input type='text' className='form-control' placeholder='Enter Age'
+                        value={age} onChange={(e)=>setAge(e.target.value)}></input>
                     </Col>
                     <Col>
-                        <input type='checkbox' ></input>
+                        <input type='checkbox' 
+                        checked={isActive===1 ? true:false} onChange={(e)=>setIsActive(e)} value={isActive} ></input>
                         <label>IsActive</label>
                     </Col>
                     <Col>
@@ -130,17 +142,20 @@ function Crud() {
                 <Modal.Body>
 
                     <Row className='mt-4'>
-                        <Col>
-                            <input type='text' className='form-control' placeholder='Enter Name'></input>
-                        </Col>
-                        <Col>
-                            <input type='text' className='form-control' placeholder='Enter Age'></input>
-                        </Col>
-                        <Col>
-                            <input type='checkbox' ></input>
-                            <label>IsActive</label>
-                        </Col>
-                      
+                    <Col>
+                        <input type='text' className='form-control' placeholder='Edit Name'
+                        value={editname} onChange={(e)=>setEditName(e.target.value)}></input>
+                    </Col>
+                    <Col>
+                        <input type='text' className='form-control' placeholder='Edit Age'
+                        value={editage} onChange={(e)=>setEditAge(e.target.value)}></input>
+                    </Col>
+                    <Col>
+                        <input type='checkbox' 
+                        checked={editisActive===1 ? true:false} onChange={(e)=>setEditIsActive(e)} value={editisActive} ></input>
+                        <label>IsActive</label>
+                    </Col>
+
                     </Row>
 
                 </Modal.Body>
